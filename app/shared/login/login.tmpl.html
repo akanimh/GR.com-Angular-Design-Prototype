@@ -1,0 +1,20 @@
+<form ng-hide="accepted" ng-submit="submit()">
+<h2 class="criteria">Login</h2>
+<md-card flex>
+  <md-card-content>
+    <md-input-container class="md-icon-float">
+      <label for="spEmail" class="control-label">Username or Email</label>
+      <md-icon md-svg-src="assets/images/ic_open_in_browser_black_24px.svg" class="name"></md-icon>
+      <input class="form-control" id="spUsername" ng-model="formModel.username" ng-disabled="posting" required name="UsernameorEmail" type="text">
+    </md-input-container>
+    <md-input-container class="md-icon-float">
+      <label for="spPassword" class="control-label">Password</label>
+      <md-icon md-svg-src="assets/images/ic_lock_black_24px.svg" class="password"></md-icon>
+      <input type="password" class="form-control" id="spPassword" ng-model="formModel.password" ng-disabled="posting" required name="Password" type="text">
+    </md-input-container>
+    <p class="md-caption" style="color:red" ng-show="error" ng-bind="error"></p>
+    <button type="submit" class="md-button md-default-theme md-accent md-raised" ng-disabled="posting">Login</button>
+    <a ui-sref="passwordResetRequest">Forgot Password</a>
+  </md-card-content>
+  </md-card>
+</form>

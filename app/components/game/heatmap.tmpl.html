@@ -1,0 +1,29 @@
+<!-- SWAK NOTE: (TODO) Inline styles here, quick and dirty as these are subject to change, works for now. -->
+<md-dialog aria-label="Heat Map Graph">
+  <md-toolbar>
+    <div class="md-toolbar-tools">
+      <h2>Activity Heat Map</h2>
+      <span flex></span>
+      <md-button class="md-icon-button" ng-click="closeDialog()">
+        <md-icon md-svg-src="assets/images/ic_close_black_24px.svg" aria-label="Close dialog"></md-icon>
+      </md-button>
+    </div>
+  </md-toolbar>
+  <md-dialog-content layout="column" layout-align="center center" class="dialog-ss" style="background-image: url(assets/images/heatmap.png);">
+    <div layout="column" layout-align="center center" flex style="color: #FFF">
+      <div layout="column" layout-align="center center" layout-padding class="dialog-overlay">
+        <div layout-padding>
+          A heat map displaying a color coded calendar of activity per stream session.
+        </div>
+        <strong style="text-align: center">This feature is coming soon. GR is developed in our spare time. Help us develop features faster by donating!</strong>
+        <md-button class="md-primary md-raised num-blue md-title">
+          <md-icon md-svg-icon="assets/images/ic_attach_money_white_24px.svg"></md-icon> Donate </md-button>
+      </div>
+    </div>
+  </md-dialog-content>
+  <div class="md-actions" layout="row">
+    <md-button ng-click="closeDialog()">
+      Close
+    </md-button>
+  </div>
+</md-dialog>

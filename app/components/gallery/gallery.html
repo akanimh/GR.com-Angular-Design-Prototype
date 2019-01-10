@@ -1,0 +1,27 @@
+<!-- SWAK NOTE: (TODO) "Uniquely" layed here, but does the trick responsively. Could adjust row-height at different resolutions more, but pretty good as is -->
+<div ng-controller="gridListCtrl" class="md-padding">
+  <md-grid-list md-cols-sm="2" md-cols-md="3" md-cols-md="4" md-cols-lg="4" md-cols-gt-lg="5" md-row-height-gt-md="1:1.4" md-row-height="1:1.6" md-gutter="16px">
+    <md-grid-tile ng-click="go('/game')" ng-repeat="item in items" ng-style="{'background-image': 'url({{item.img}})'}" class="grid-tile">
+      <md-grid-tile-header>
+        <h2 flex="50">{{item.name}}</h2>
+      </md-grid-tile-header>
+      <div flex layout-fill>
+      </div>
+      <md-grid-tile-footer>
+        <div flex="60" flex-sm="45" layout="row">
+          <div flex layout="row" layout-align="space-around center" layout-wrap>
+            <div class="pcs-up">{{item.pros}}<img src="assets/images/ic_thumb_up_green_24px.svg" class="rating-icon" alt=""></div>
+            <div class="pcs-down">{{item.cons}}<img src="assets/images/ic_thumb_down_red_24px.svg" class="rating-icon" alt=""></div>
+          </div>
+          <div flex="40" flex-sm="55" layout="column" layout-align="center center" layout-wrap>
+            <h4>Pros vs. Cons
+            </h4>
+            <md-button href="/game" class="avg-rating-score md-raised" ng-class="{'num-zero': item.rating<=0, 'num-red': item.rating>=10 && item.rating<20, 'num-yellow': item.rating>=20 && item.rating<40, 'num-blue': item.rating>=40 && item.rating<70, 'num-green': item.rating>=70}">
+              <span>{{item.rating}}%</span>
+            </md-button>
+          </div>
+        </div>
+      </md-grid-tile-footer>
+    </md-grid-tile>
+  </md-grid-list>
+</div>

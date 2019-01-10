@@ -1,0 +1,28 @@
+/*Styles for flames/stars rating*/
+
+.rating {
+  margin: 0;
+  padding: 0;
+}
+
+ul.rating {
+  display: inline-block;
+  margin-right: 1em;
+}
+
+.rating li {
+  list-style-type: none;
+  display: inline-block;
+  padding: 1px;
+  text-align: center;
+  font-weight: bold;
+  cursor: pointer;
+}
+
+.rating svg {
+  fill: #a9a9a9;
+}
+
+.rating .filled svg {
+  fill: #FFAB40;
+}

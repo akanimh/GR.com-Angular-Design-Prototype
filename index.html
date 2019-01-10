@@ -1,0 +1,128 @@
+<!doctype html>
+<!--[if lt IE 7]>      <html class="no-js lt-ie9 lt-ie8 lt-ie7"> <![endif]-->
+<!--[if IE 7]>         <html class="no-js lt-ie9 lt-ie8"> <![endif]-->
+<!--[if IE 8]>         <html class="no-js lt-ie9"> <![endif]-->
+<!--[if gt IE 8]><!-->
+<html class="no-js" ng-app="dashboardApp">
+<!--<![endif]-->
+
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <base href="/">
+    <title></title>
+    <meta name="description" content="">
+    <meta name="viewport" content="width=device-width, initial-scale=1, minimum-scale=1, maximum-scale=3">
+    <link rel="stylesheet" href="angular_components/angular-material/angular-material.css" />
+    <link rel="stylesheet" href="assets/css/app.css">
+    <link rel="stylesheet" href="assets/css/admin.css">
+    <link rel="stylesheet" href="assets/css/app.css">
+    <link rel="stylesheet" href="assets/css/emailverification.css">
+    <link rel="stylesheet" href="assets/css/game.css">
+    <link rel="stylesheet" href="assets/css/login.css">
+    <link rel="stylesheet" href="assets/css/passwordreset.css">
+    <link rel="stylesheet" href="assets/css/passwordresetrequest.css">
+    <link rel="stylesheet" href="assets/css/profile.css">
+    <link rel="stylesheet" href="assets/css/register.css">
+    <link rel="stylesheet" href="assets/css/starrating.css">
+    <link rel="stylesheet" href="assets/css/bottom-fab.css">
+    <link rel="stylesheet" href="assets/css/gallery.css">
+</head>
+
+<body layout="column" ng-controller="NavCtrl">
+    <!--[if lt IE 7]>
+      <p class="browsehappy">You are using an <strong>outdated</strong> browser. Please <a href="http://browsehappy.com/">upgrade your browser</a> to improve your experience.</p>
+    <![endif]-->
+    <md-toolbar ng-cloak md-scroll-shrink class="md-hue-3" layout="row" hide-gt-md ng-controller="rightNavCtrl">
+        <div flex layout="row" layout-align="start center">
+            <md-button ng-click="toggleSidenav('left')" hide-gt-md class="md-icon-button menuBtn">
+                <md-icon class="icon-spin" aria-label="Menu" md-svg-icon="assets/images/menu.svg"></md-icon>
+            </md-button>
+        </div>
+        <div flex layout="row" layout-align="center center">
+            <md-button href="/" class="md-icon-button menuBtn">
+                <md-icon md-svg-icon="assets/images/grtotem_fff.svg" aria-label="Home" class="gricon"></md-icon>
+            </md-button>
+        </div>
+        <div flex></div>
+        <!-- SWAK TODO: (NOTE) Top Right Side Menu (3 vertical dots), commented for not having any use for now. -->
+        <!-- <md-menu flex layout="row" layout-align="end center" md-position-mode="target-right target">
+      <md-button ng-click="$mdOpenMenu($event)" hide-gt-md class="md-icon-button menuBtn">
+        <md-icon class="icon-spin" aria-label="Right Menu" md-svg-icon="assets/images/ic_more_vert_white_24px.svg"></md-icon>
+      </md-button>
+      <md-menu-content width="4">
+        <md-menu-item ng-repeat="item in items">
+          <md-button ng-click="ctrl.announceClick($index)">
+            <div layout="row">
+              <p flex ng-cloak>{{item.option}}</p>
+            </div>
+          </md-button>
+        </md-menu-item>
+      </md-menu-content>
+    </md-menu> -->
+    </md-toolbar>
+    <section layout="row" class="content-wrapper" flex ng-controller="bottomFabCtrl">
+        <md-sidenav ng-cloak layout="column" ng-include="'app/shared/navbar/navbar.html'" class="md-sidenav-left md-hue-3 md-whiteframe-z5" md-component-id="left" md-is-locked-open="$mdMedia('gt-md')">
+        </md-sidenav>
+        <md-content layout="column" flex ui-view=""></md-content>
+    </section>
+    <div layout="column" ng-include="'app/shared/bottom-fab/bottom-fab.html'">
+    </div>
+    <script>
+    (function(i, s, o, g, r, a, m) {
+        i['GoogleAnalyticsObject'] = r;
+        i[r] = i[r] || function() {
+            (i[r].q = i[r].q || []).push(arguments)
+        }, i[r].l = 1 * new Date();
+        a = s.createElement(o),
+            m = s.getElementsByTagName(o)[0];
+        a.async = 1;
+        a.src = g;
+        m.parentNode.insertBefore(a, m)
+    })(window, document, 'script', '//www.google-analytics.com/analytics.js', 'ga');
+
+    ga('create', 'UA-XXXXX-X');
+    ga('send', 'pageview');
+    </script>
+    <!--[if lt IE 9]>
+    <script src="angular_components/es5-shim/es5-shim.js"></script>
+    <script src="angular_components/json3/lib/json3.min.js"></script>
+    <![endif]-->
+    <script src="angular_components/jquery/jquery.js"></script>
+    <script src="angular_components/angular/angular.js"></script>
+    <script src="angular_components/angular-cookies/angular-cookies.js"></script>
+    <script src="angular_components/angular-animate/angular-animate.js"></script>
+    <script src="angular_components/angular-aria/angular-aria.js"></script>
+    <script src="angular_components/angular-material/angular-material.js"></script>
+    <script src="angular_components/angular-resource/angular-resource.js"></script>
+    <script src="angular_components/angular-sanitize/angular-sanitize.js"></script>
+    <script src="angular_components/angular-ui-router/release/angular-ui-router.js"></script>
+    <script src="angular_components/lodash/dist/lodash.compat.js"></script>
+    <script src="angular_components/stormpath-sdk-angularjs/dist/stormpath-sdk-angularjs.min.js"></script>
+    <script src="angular_components/stormpath-sdk-angularjs/dist/stormpath-sdk-angularjs.tpls.min.js"></script>
+    <script src="app/app.js"></script>
+    <script src="app/shared/admin/admin.controller.js"></script>
+    <script src="app/shared/admin/admin.js"></script>
+    <script src="app/shared/emailverification/emailverification.controller.js"></script>
+    <script src="app/shared/emailverification/emailverification.js"></script>
+    <script src="app/shared/login/login.controller.js"></script>
+    <script src="app/shared/login/login.js"></script>
+    <script src="app/shared/passwordreset/passwordreset.controller.js"></script>
+    <script src="app/shared/passwordreset/passwordreset.js"></script>
+    <script src="app/shared/passwordresetrequest/passwordresetrequest.controller.js"></script>
+    <script src="app/shared/passwordresetrequest/passwordresetrequest.js"></script>
+    <script src="app/shared/profile/profile.controller.js"></script>
+    <script src="app/shared/profile/profile.js"></script>
+    <script src="app/shared/register/register.controller.js"></script>
+    <script src="app/shared/register/register.js"></script>
+    <script src="app/shared/bottom-fab/bottom-fab.controller.js"></script>
+    <script src="app/shared/navbar/navbar.controller.js"></script>
+    <script src="app/components/main/main.controller.js"></script>
+    <script src="app/components/main/main.js"></script>
+    <script src="app/components/game/game.controller.js"></script>
+    <script src="app/components/game/game.js"></script>
+    <script src="app/components/gallery/gallery.controller.js"></script>
+    <script src="app/components/starrating/starrating.directive.js"></script>
+</body>
+
+</html>

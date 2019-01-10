@@ -1,0 +1,20 @@
+<md-dialog aria-label="Heat Map Graph">
+  <md-toolbar>
+    <div class="md-toolbar-tools">
+      <h2>Login</h2>
+      <span flex></span>
+      <md-button class="md-icon-button" ng-click="closeDialog()">
+        <md-icon md-svg-src="assets/images/ic_close_black_24px.svg" aria-label="Close dialog"></md-icon>
+      </md-button>
+    </div>
+  </md-toolbar>
+  <md-dialog-content layout="column" flex layout-align="center center" layout-padding>
+  <h3>Login</h3>
+  <div sp-login-form></div>
+  </md-dialog-content>
+  <div class="md-actions" layout="row">
+    <md-button ng-click="closeDialog()">
+      Close
+    </md-button>
+  </div>
+</md-dialog>

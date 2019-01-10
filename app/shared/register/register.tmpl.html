@@ -1,0 +1,29 @@
+<h2 ng-hide="created && !authenticating" class="criteria">Register</h2>
+<h2 class="criteria" ng-show="created && !enabled">Your account has been created. Please check your email for a verification link.</h2>
+<h2 class="criteria" ng-show="created && enabled && !authenticating">Your account has been created. <a ui-sref=login>Login Now</a>.</h2>
+<form name="registerForm" ng-hide="created && !authenticating" ng-submit="submit()">
+  <md-card flex>
+    <md-card-content>
+      <md-input-container>
+        <label for="spFirstName" class="control-label">First Name</label>
+        <input class="form-control" id="spFirstName" ng-model="formModel.givenName" ng-disabled="creating" required name="FirstName" type="text">
+      </md-input-container>
+      <md-input-container>
+        <label for="spLastName" class="control-label">Last Name</label>
+        <input class="form-control" id="spLastName" ng-model="formModel.surname" ng-disabled="creating" required name="LastName" type="text">
+      </md-input-container>
+      <md-input-container class="md-icon-float">
+        <label for="spEmail" class="control-label">Email</label>
+        <md-icon md-svg-src="assets/images/ic_email_black_24px.svg" class="name"></md-icon>
+        <input class="form-control" id="spEmail" ng-model="formModel.email" ng-disabled="creating" required name="Email" type="text">
+      </md-input-container>
+      <md-input-container class="md-icon-float">
+        <label for="spPassword" class="control-label">Password</label>
+        <md-icon md-svg-src="assets/images/ic_lock_black_24px.svg" class="name"></md-icon>
+        <input type="password" class="form-control" id="spPassword" ng-model="formModel.password" ng-disabled="creating" required name="Password" type="text">
+      </md-input-container>
+      <p class="md-caption" style="color:red" ng-show="error" ng-bind="error"></p>
+      <button type="submit" class="md-button md-default-theme md-accent md-raised" ng-disabled="creating">Register</button>
+    </md-card-content>
+  </md-card>
+</form>

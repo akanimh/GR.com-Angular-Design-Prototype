@@ -1,0 +1,55 @@
+<div layout="column" flex ng-controller="NavListCtrl">
+  <div hide-md hide-sm layout="column" layout-align="center center">
+    <a href="/" layout="column" layout-align="center center">
+      <img src="/assets/images/grtotem_alpha.svg" class="logo">
+    </a>
+  </div>
+  <md-list class="navList">
+    <md-item>
+      <md-item-content>
+        <md-button ng-href="{{item.link}}" ng-repeat="item in menu" class="md-hue-3" ng-click="selectLink(it)" ng-class="{active: isActive('/')}">
+          <span class="md-title"><img src="assets/images/ic_whatshot_white_24px.svg" class="menu-icon" alt="">{{item.title}}</span>
+        </md-button>
+        <md-button ui-sref="game" class="md-hue-3" ng-click="selectLink(it)" ng-class="{active: isActive('/game')}">
+          <span class="md-title"><img src="assets/images/ic_gamepad_white_24px.svg" class="menu-icon" alt="">Game</span>
+        </md-button>
+        <md-button ui-sref="profile" class="md-hue-3" if-user ng-click="selectLink(it)" ng-class="{active: isActive('/profile')}">
+          <span class="md-title"><img src="assets/images/ic_assignment_ind_white_24px.svg" class="menu-icon" alt="">Profile</span>
+        </md-button>
+        <md-button ui-sref="register" class="md-hue-3" if-not-user ng-click="selectLink(it)" ng-class="{active: isActive('/register')}">
+          <span class="md-title"><img src="assets/images/ic_assignment_turned_in_white_24px.svg" class="menu-icon" alt="">Register</span>
+        </md-button>
+        <md-button ui-sref="login" class="md-hue-3" if-not-user ng-click="selectLink(it)" ng-class="{active: isActive('/login')}">
+          <span class="md-title"><img src="assets/images/ic_open_in_browser_white_24px.svg" class="menu-icon" alt="">Login</span>
+        </md-button>
+        <md-button ui-sref="admin" class="md-hue-3" ng-click="selectLink(it)" if-user-in-group="'Admins'">
+          <span class="md-title"><img src="assets/images/ic_local_pizza_white_24px.svg" class="menu-icon" alt="">Admin Console</span>
+        </md-button>
+        <md-button ui-sref="main" sp-logout class="md-hue-3" if-user ng-click="selectLink(it)" ng-class="{active: isActive('/logout')}">
+          <span class="md-title"><img src="assets/images/ic_close_in_browser_white_24px.svg" class="menu-icon" alt="">Logout</span>
+        </md-button>
+        <!-- <md-button class="md-hue-3" if-user-not-in-group="'Admins'">
+            Not Admin
+          </md-button> -->
+      </md-item-content>
+    </md-item>
+  </md-list>
+  <!-- Div pushes content to bottom -->
+  <div flex class="md-hue-3"></div>
+  <!-- <div flex layout="column" layout-align="center center">
+      <img src="http://i.imgur.com/Ryvvggr.png">
+    </div> -->
+  <!-- <h4 class="md-subhead md-padding" style="color: #FFF">
+        Debug: Logged in?
+        <span class="md-subhead" if-not-user style="color: red">
+        No. Expect 401 (Unauthorized) errors in console.
+        </span>
+        <span class="md-subhead" if-user style="color: green">
+        Yes!
+        </span>
+      </h4> -->
+  <div class="md-toolbar-tools md-toolbar-tools-bottom" layout-padding layout-align="center center">
+    <div class="md-primary md-caption copyright">
+      &copy; GameRoast.com 2015
+    </div>
+  </div>

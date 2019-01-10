@@ -1,0 +1,341 @@
+/*Color fills for All Criteria List Icons*/
+
+.Pro svg,
+.Pro .st1 {
+  fill: #48A944;
+}
+
+.Con svg,
+.Con .st1 {
+  fill: #F44336;
+}
+
+.Bonus svg {
+  fill: #2DA1DC;
+}
+
+.criteria-links a {
+  color: #424242;
+  text-decoration: none;
+}
+
+
+/*Conditional styling for button colors*/
+
+.num-zero,
+.md-button.num-zero,
+a.md-button.num-zero.md-raised:not([disabled]):hover,
+.md-button.num-zero.md-raised:not([disabled]):hover,
+.md-button.num-zero.md-raised:not([disabled]).md-focused,
+a.md-button.num-zero.md-raised,
+.md-button.num-zero.md-raised {
+  background-color: #000;
+}
+
+.num-red,
+.md-button.num-red,
+a.md-button.num-red.md-raised:not([disabled]):hover,
+.md-button.num-red.md-raised:not([disabled]):hover,
+.md-button.num-red.md-raised:not([disabled]).md-focused,
+a.md-button.num-red.md-raised,
+.md-button.num-red.md-raised {
+  background-color: #F44336;
+}
+
+.num-yellow,
+.md-button.num-yellow,
+a.md-button.num-yellow.md-raised:not([disabled]):hover,
+.md-button.num-yellow.md-raised:not([disabled]):hover,
+.md-button.num-yellow.md-raised:not([disabled]),
+a.md-button.num-yellow.md-raised,
+.md-button.num-yellow.md-raised {
+  background-color: #FFAB40;
+}
+
+.num-blue,
+.md-button.num-blue,
+a.md-button.num-blue.md-raised:not([disabled]):hover,
+.md-button.num-blue.md-raised:not([disabled]):hover,
+.md-button.num-blue.md-raised:not([disabled]),
+a.md-button.num-blue.md-raised,
+.md-button.num-blue.md-raised {
+  background-color: #2DA1DC;
+}
+
+.num-green,
+.md-button.num-green,
+a.md-button.num-green.md-raised:not([disabled]):hover,
+.md-button.num-green.md-raised:not([disabled]):hover,
+.md-button.num-green.md-raised:not([disabled]),
+a.md-button.num-green.md-raised,
+.md-button.mud-blue.md-raised.md-focused {
+  background-color: #48A944;
+}
+
+.card-cover {
+  background-color: #212121;
+}
+
+/*Strongs it up where needed*/
+
+.strong {
+  font-weight: 700;
+}
+
+/*Background styles for screenshot cards*/
+
+.game-ss {
+  background-repeat: no-repeat;
+  background-size: cover;
+  background-position: 50%;
+  background-color: #000;
+}
+
+.ss-card-content {
+  color: #FFF;
+  background: rgba(33, 33, 33, 0.6);
+}
+
+
+/*Styles for chips in right screenshot card*/
+
+.ss-card-content .md-chips .md-chip {
+  opacity: 0.7;
+}
+
+.ss-card-content .md-chips .md-chip:hover {
+  opacity: 1;
+}
+
+.ss-card-content md-chips .md-chips {
+  box-shadow: 0 1px rgba(224, 224, 224, 0.6);
+}
+
+.ss-card-content md-divider {
+  border-top-color: rgba(224, 224, 224, 0.6);
+}
+
+
+/*Custom Dialog styles for missing graphs - TODO: Forced min-height for temporary fix*/
+
+.dialog-ss {
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-position: 50%;
+    background-color: #000;
+    max-height: 480px;
+    max-width: 553px;
+    min-height: 480px; 
+}
+
+.dialog-overlay {
+  background: rgba(33, 33, 33, 0.6);
+}
+
+
+/*Tweak to ensure icons don't get too small responsively*/
+
+md-list md-list-item > md-icon {
+  min-width: 20px;
+}
+
+
+/*Applies style to Pros and Cons beneath percentage and on gallery*/
+
+.pcs-up,
+.pcs-down,
+.totvotes {
+  font-size: 28px;
+  font-weight: 500;
+}
+
+.pcs-up {
+  color: #48A944;
+}
+
+.pcs-down {
+  color: #F44336;
+}
+
+
+/*Removes extra margins on chips for better fit*/
+
+.ratings,
+.chips,
+.details,
+.roast-details {
+  margin-top: 0;
+  margin-bottom: 0;
+}
+
+
+/*Styles and fits top criteria columns with colors*/
+
+.pros {
+  background-color: #407D3D;
+  color: #FFF;
+}
+
+.cons {
+  background-color: #A9433B;
+  color: #FFF;
+}
+
+.bonus {
+  background-color: #397392;
+  color: #FFF;
+}
+
+.pros h4,
+.pros p,
+.cons h4,
+.cons p,
+.bonus h4,
+.bonus p {
+  margin-top: 8px;
+  margin-bottom: 4px;
+}
+
+
+/*Keeps criteria links in All Criteria section from breaking when moved to new line responsively*/
+
+.criteria-links span {
+  white-space: nowrap;
+}
+
+
+/*Styles icons in All Criteria section*/
+
+.submitted-by,
+.category,
+.type,
+.rating-icon {
+  width: 16px;
+  margin-left: 10px;
+}
+
+
+/*Styles for Top Criteria section*/
+
+.top-criteria .submitted-by {
+  opacity: 0.87;
+}
+
+.top-criteria .md-secondary svg {
+  fill: #FFF;
+  opacity: 0.87;
+}
+
+.top-criteria a {
+  color: #C5C5C5;
+  text-decoration: none;
+}
+
+
+/*Tiny margin hack to adjusts flames to fit closer together */
+
+.star {
+  width: 20px;
+  margin: -2px;
+}
+
+
+/*Score and review time adjustments for better look*/
+
+.review-time {
+  white-space: nowrap;
+}
+
+.our-score {
+  text-align: center;
+}
+
+
+/*Button changes for better fitting, size, and color overwrites specifically*/
+
+.game .md-button,
+.game .md-button h3 {
+  min-width: 72px;
+  line-height: 0px;
+}
+
+.avg-score,
+.md-button.avg-score {
+  color: #FFF;
+  font-weight: 900;
+  font-size: 48px;
+  line-height: 48px;
+  width: 100%;
+}
+
+.avg-rating-score,
+.md-button.avg-rating-score,
+a.md-button.avg-rating-score {
+  color: #FFF;
+  font-weight: 900;
+  font-size: 28px;
+  line-height: 34px;
+}
+
+
+/*Floating titles with h3 and h4 between cards fitting and style*/
+
+.criteria {
+  margin-top: 0;
+  margin-bottom: 0;
+  margin-left: 10px;
+  color: #FFF;
+  text-align: middle;
+  text-transform: uppercase;
+}
+
+/*Thumbs up and thumbs down img styles*/
+
+img.rating-icon {
+  height: 20px;
+  margin-left: 2px;
+  margin-right: 2px;
+  opacity: 0.87;
+}
+
+/*All criteria section styles*/
+
+.all-criteria md-list-item.md-2-line .md-list-item-text h3 {
+  line-height: 1.4em;
+}
+
+.all-criteria h4 {
+  margin-top: 0;
+  margin-bottom: 0;
+}
+
+.odd {
+  background-color: #F1F1F1;
+}
+
+/*Class specific img adjustment*/
+
+img.rating-icon {
+  height: 20px;
+  margin-left: 2px;
+  margin-right: 2px;
+  opacity: 0.87;
+}
+
+/*Colors for checkboxes*/
+
+.check-pro, .check-con, .check-bonus {
+  font-weight: 500;
+}
+
+.check-pro {
+ color: #48A944;
+}
+
+.check-con {
+color: #F44336;
+}
+
+.check-bonus {
+color: #2DA1DC;
+}

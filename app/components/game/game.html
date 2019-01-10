@@ -1,0 +1,289 @@
+<section layout="row" layout-wrap>
+    <div layout="column" flex="30" flex-lg="50" flex-md="50" flex-sm="100" ng-controller="ourScoreCtrl">
+        <div layout="column" flex ng-repeat="item in items">
+            <md-card class="card-cover">
+                <img src="{{item.cover}}" class="md-card-image" alt="">
+            </md-card>
+                <md-card flex>
+                    <md-card-content>
+                        <div flex layout="row" class="our-score" layout-wrap>
+                            <div flex="50" flex-sm="45">
+                                <h3 class="md-display-1 strong">{{item.game}}</h3>
+                            </div>
+                            <div flex>
+                                <!-- SWAK NOTE: (TODO) Tooltips in Chrome may load out of place on first hover, issue submitted here: https://github.com/angular/material/issues/4345 - Currently have all tooltips commented as they aren't functioning that great, but could be used if people are getting confused -->
+                                <!-- <span class="md-caption">(<a href="" onclick="return false;">?<md-tooltip md-direction="top">Percentage of Pros to total Pros and Cons</md-tooltip></a>)</span> -->
+                                <!-- SWAK TODO: Could write a directive for this, but it works quite well as is. Up to you -->
+                                <md-button flex ng-click="showPercGraph($event)" class="avg-score md-raised" ng-class="{'num-zero': item.scorecalc<=0, 'num-red': item.scorecalc>=10 && item.scorecalc<20, 'num-yellow': item.scorecalc>=20 && item.scorecalc<40, 'num-blue': item.scorecalc>=40 && item.scorecalc<70, 'num-green': item.scorecalc>=70}">{{ item.scorecalc }}%
+                                </md-button>
+                                <div flex>Pros vs. Cons</div>
+                                <div flex layout="row" layout-align="center center">
+                                    <span flex class="pcs-up">{{item.pros}}<img src="assets/images/ic_thumb_up_green_24px.svg" class="rating-icon" alt=""></span>
+                                    <span flex class="pcs-down">{{item.cons}}<img src="assets/images/ic_thumb_down_red_24px.svg" class="rating-icon" alt=""></span>
+                                </div>
+                            </div>
+                        </div>
+                        <md-divider></md-divider>
+                        <div layout="row">
+                            <div layout="column" flex>
+                                <md-list-item layout="row" flex layout-align="end center" class="md-1-line">
+                                    <img src="/assets/images/ic_timer_black_24px.svg" class="md-avatar">
+                                    <div class="md-list-item-text">
+                                        <h3 class="ratings">Roast Time</h3>
+                                    </div>
+                                </md-list-item>
+                            </div>
+                            <div layout="column" flex>
+                                <div layout="row" flex layout-align="center center" layout-wrap>
+                                    <!-- SWAK TODO: Could write a directive for this, but it works quite well as is. Up to you -->
+                                    <md-button class="md-primary md-hue-1 md-raised" ng-click="showHeatMapGraph($event)">
+                                        <span class="md-title">{{ (item.time<60) ? (item.time) + 'm' : (item.time%60==0)? (item.time-item.time%60)/60 + 'h' : ((item.time-item.time%60)/60 + 'h' + ' ' + item.time%60 + 'm') }} </span>
+                                    </md-button>
+                                </div>
+                            </div>
+                        </div>
+                    </md-card-content>
+                </md-card>
+        </div>
+    </div>
+    <div layout="column" flex="40" flex-lg="50" flex-md="50" flex-sm="100" ng-controller="viewerRatingsCtrl">
+        <md-card layout="row" flex ng-controller="screenShotsCtrl">
+            <div flex layout="row" class="game-ss" layout-align="center center" layout-fill ng-if="$first" ng-repeat="item in items" ng-style="{'background-image': 'url({{item.ss}})'}">
+            </div>
+        </md-card>
+        <h2 class="criteria"><img src="assets/images/ic_language_white_24px.svg" class="rating-icon" alt="">Viewer Ratings</h2>
+        <!-- <span class="md-caption">(<a href="" onclick="return false;">?<md-tooltip md-direction="top">Average based on submitted ratings from viewers</md-tooltip></a>)</span> -->
+        <md-card layout="row" ng-repeat="item in items">
+            <!-- SWAK TODO: Extra column divs wrap here to help ratings buttons overlap (instead of push) titles on lower res -->
+            <div layout="column" flex="45">
+                <md-list-item layout="row" flex layout-align="start center" class="md-1-line">
+                    <img src="{{item.icon}}" class="md-avatar">
+                    <div class="md-list-item-text">
+                        <h3 class="ratings">{{item.type}}</h3>
+                    </div>
+                </md-list-item>
+            </div>
+            <div layout="column" flex>
+                <div layout="row" flex layout-align="center center" layout-wrap>
+                    <!-- SWAK TODO: Could write a directive for this, but it works quite well as is. Up to you -->
+                    <md-button flex class="avg-rating-score md-raised" ng-click="showVotePieGraph($event)" ng-class="{'num-zero': item.rating<=0, 'num-red': item.rating>=1 && item.rating<2, 'num-yellow': item.rating>=2 && item.rating<4, 'num-blue': item.rating>=4 && item.rating<7, 'num-green': item.rating>=7}">{{item.rating}}/10
+                    </md-button>
+                    <md-button flex class="md-primary md-hue-1 md-raised" ng-click="showVoteList($event)">
+                        <md-icon md-svg-icon="/assets/images/ic_people_black_24px.svg"></md-icon> {{item.totvotes}}
+                    </md-button>
+                </div>
+            </div>
+        </md-card>
+    </div>
+    <div layout="column" flex="30" flex-lg="100" flex-md="100" flex-sm="100">
+        <md-card flex layout="column" layout-align="center center" ng-controller="screenShotsCtrl">
+            <div flex layout="column" class="game-ss" layout-align="center center" layout-fill ng-if="$last" ng-repeat="item in items" ng-style="{'background-image': 'url({{item.ss}})'}">
+                <md-card-content class="ss-card-content" ng-controller="chipsDataCtrl">
+                    <h3 class="chips">Chips:</h3>
+                    <!-- SWAK TODO: Chips use ng-model here due to ng-repeat+md-chips issue here: https://github.com/angular/material/issues/2829 -->
+                    <!-- Not sure how you want this to work, we can fake it with a chip-like matching styled class? -->
+                    <!-- I have left the remaining chips in this section static -->
+                    <md-chips class="md-hue-3" ng-model="chips" readonly="true">
+                    </md-chips>
+                    <br />
+                    <h3 class="chips">Data:</h3>
+                    <!-- GiantBomb "Deck" data goes here: -->
+                    <p class="md-caption">Dying Light is a first-person, open world game set in a zombie apocalypse. The player character is able to free-run to get around the environment quickly.</p>
+                    <md-divider></md-divider>
+                    <!-- GiantBomb "Details?" data goes here: -->
+                    <!-- SWAK TODO: Table used here due to simplicity of data. Flex div nesting could be used too, but not necessary as the data does not need to be any more responsive -->
+                    <table class="table game-details">
+                        <tbody>
+                            <tr>
+                                <td>Released:</td>
+                                <td>
+                                    <md-chips>
+                                        <md-chip>2015</md-chip>
+                                    </md-chips>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>Developer:</td>
+                                <td>
+                                    <md-chips>
+                                        <md-chip>Techland</md-chip>
+                                    </md-chips>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>Publisher:</td>
+                                <td>
+                                    <md-chips>
+                                        <md-chip>WB Games</md-chip>
+                                    </md-chips>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>Genre</td>
+                                <td>
+                                    <md-chips>
+                                        <md-chip>Action</md-chip>
+                                        <md-chip>Role-Playing</md-chip>
+                                        <md-chip>First-Person Shooter</md-chip>
+                                    </md-chips>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>Theme</td>
+                                <td>
+                                    <md-chips>
+                                        <md-chip>Horror</md-chip>
+                                        <md-chip>Post-Apocalyptic</md-chip>
+                                    </md-chips>
+                                </td>
+                            </tr>
+                        </tbody>
+                    </table>
+                    <br />
+                    <div layout="row" layout-align="end end">
+                        <span class="md-caption">Data by: <a href="#">GiantBomb</a></span>
+                    </div>
+                </md-card-content>
+            </div>
+        </md-card>
+    </div>
+</section>
+<!-- SWAK NOTE: (TODO) Decide how best to load specific icon images per category, could be class and css based... I've scoped the icon urls in below cuz I'm lazy. But I can think of a few better ways to do it, up to you. -->
+<section layout="row" class="top-criteria" layout-wrap>
+    <div layout="column" flex="33" flex-lg="50" flex-md="50" flex-sm="100">
+        <h2 class="criteria"><img src="assets/images/ic_thumb_up_white_24px.svg" class="rating-icon" alt=""> Top Pros</h2>
+        <!-- <span class="md-caption">(<a href="" onclick="return false;">?<md-tooltip md-direction="top">Positive criteria submitted during live stream</md-tooltip></a>)</span> -->
+        <md-card flex layout="column" class="pros" ng-controller="AllCritCtrl">
+            <md-list>
+                <!-- SWAK NOTE: (TODO) How sexy are ng-repeat filters with limitto, and orderby's?... This sexy... -->
+                <md-list-item class="md-1-line" ng-repeat="item in items | filter: { type: 'Pro' } | limitTo: 5 | orderBy:'rank'">
+                    <div class="md-avatar" layout="column" layout-align="center center">
+                        <div>{{ item.rank }}</div>
+                    </div>
+                    <div class="md-list-item-text">
+                        <h3>{{ item.criteria }}</h3>
+                        <div layout="row" layout-align="start end">
+                            <p>
+                                <span><a href="#"><md-icon md-svg-src="assets/images/ic_whatshot_white_24px.svg" class="rating-icon" alt=""></md-icon><span class="md-caption"> {{ item.score }}</span>
+                                <md-tooltip md-direction="bottom">Bayesian Rating Average</md-tooltip>
+                                </a>
+                                </span>
+                                <span><a href="{{ item.url }}" class="md-caption"><md-icon md-svg-src="assets/images/ic_speaker_notes_white_24px.svg" class="submitted-by" alt=""></md-icon> {{ item.submitted }}</a></span>
+                            </p>
+                        </div>
+                    </div>
+                    <md-icon md-svg-src="{{ item.category }}" class="md-secondary" alt=""></md-icon>
+                    <md-divider ng-if="!$last"></md-divider>
+                </md-list-item>
+            </md-list>
+        </md-card>
+    </div>
+    <div layout="column" flex="33" flex-lg="50" flex-md="50" flex-sm="100">
+        <h2 class="criteria"><img src="assets/images/ic_thumb_down_white_24px.svg" class="rating-icon" alt=""> Top Cons</h2>
+        <!-- <span class="md-caption">(<a href="" onclick="return false;">?<md-tooltip md-direction="top">Negative criteria submitted during live stream</md-tooltip></a>)</span> -->
+        <md-card flex layout="column" class="cons" ng-controller="AllCritCtrl">
+            <md-list>
+                <md-list-item class="md-1-line" ng-repeat="item in items | filter: { type: 'Con' } | limitTo: 5 | orderBy:'rank'">
+                    <div class="md-avatar" layout="column" layout-align="center center">
+                        <div>{{ item.rank }}</div>
+                    </div>
+                    <div class="md-list-item-text">
+                        <h3>{{ item.criteria }}</h3>
+                        <div layout="row" layout-align="start end">
+                            <p>
+                                <span><a href="#"><md-icon md-svg-src="assets/images/ic_whatshot_white_24px.svg" class="rating-icon" alt=""></md-icon><span class="md-caption"> {{ item.score }}</span>
+                                <md-tooltip md-direction="bottom">Bayesian Rating Average</md-tooltip>
+                                </a>
+                                </span>
+                                <span><a href="{{ item.url }}" class="md-caption"><md-icon md-svg-src="assets/images/ic_speaker_notes_white_24px.svg" class="submitted-by" alt=""></md-icon> {{ item.submitted }}</a></span>
+                            </p>
+                        </div>
+                    </div>
+                    <md-icon md-svg-src="{{ item.category }}" class="md-secondary" alt=""></md-icon>
+                    <md-divider ng-if="!$last"></md-divider>
+                </md-list-item>
+            </md-list>
+        </md-card>
+    </div>
+    <div layout="column" flex="33" flex-lg="50" flex-md="50" flex-sm="100">
+        <h2 class="criteria"><img src="assets/images/ic_gesture_white_24px.svg" class="rating-icon" alt=""> Top Bonus</h2>
+        <!-- <span class="md-caption">(<a href="" onclick="return false;">?<md-tooltip md-direction="top">Bonus criteria submitted during live stream (Not scored) </md-tooltip></a>)</span> -->
+        <md-card flex layout="column" class="bonus" ng-controller="AllCritCtrl">
+            <md-list>
+                <md-list-item class="md-1-line" ng-repeat="item in items | filter: { type: 'Bonus' } | limitTo: 5 | orderBy:'rank'">
+                    <div class="md-avatar" layout="column" layout-align="center center">
+                        <div>{{ item.rank }}</div>
+                    </div>
+                    <div class="md-list-item-text">
+                        <h3>{{ item.criteria }}</h3>
+                        <div layout="row" layout-align="start end">
+                            <p>
+                                <span><a href="#"><md-icon md-svg-src="assets/images/ic_whatshot_white_24px.svg" class="rating-icon" alt=""></md-icon><span class="md-caption"> {{ item.score }}</span>
+                                <md-tooltip md-direction="bottom">Bayesian Rating Average</md-tooltip>
+                                </a>
+                                </span>
+                                <span><a href="{{ item.url }}" class="md-caption"><md-icon md-svg-src="assets/images/ic_speaker_notes_white_24px.svg" class="submitted-by" alt=""></md-icon> {{ item.submitted }}</a></span>
+                            </p>
+                        </div>
+                    </div>
+                    <md-icon md-svg-src="{{ item.category }}" class="md-secondary" alt=""></md-icon>
+                    <md-divider ng-if="!$last"></md-divider>
+                </md-list-item>
+            </md-list>
+        </md-card>
+    </div>
+</section>
+<!-- SWAK NOTE: (TODO) Also need to decide how best to load specific icon images per category here, and type (pro, con, bonus)... I've scoped the icon urls in below cuz I'm lazy. But I can think of a few better ways to do it, up to you. -->
+<section layout="column" ng-controller="AllCritCtrl" class="all-criteria">
+    <h2 class="criteria" id="#AllCriteria"><img src="assets/images/ic_list_white_24px.svg" class="rating-icon" alt=""> All Criteria </h2>
+    <!-- <span class="md-caption">(<a>?</a>)</span> -->
+    <md-card layout-padding>
+        <h4 layout-padding>Filter By:</h4>
+        <div layout="row" layout-align="start center" layout-wrap>
+            <!-- SWAK NOTE: (TODO) This was the simplest way I could see to do checkbox filtering without writing a custom filter function. Up to you. -->
+            <md-checkbox data-ng-model='search.pro' data-ng-true-value="'Pro'" data-ng-false-value="''"><span class="check-pro">Pro</span></md-checkbox>
+            <md-checkbox data-ng-model='search.con' data-ng-true-value="'Con'" data-ng-false-value="''"><span class="check-con">Con</span></md-checkbox>
+            <md-checkbox data-ng-model='search.bonus' data-ng-true-value="'Bonus'" data-ng-false-value="''"><span class="check-bonus">Bonus</span></md-checkbox>
+            <md-checkbox data-ng-model='search.graphics' data-ng-true-value="'Graphics'" data-ng-false-value="''">Graphics</md-checkbox>
+            <md-checkbox data-ng-model='search.sounds' data-ng-true-value="'Sounds'" data-ng-false-value="''">Sounds</md-checkbox>
+            <md-checkbox data-ng-model='search.mechanics' data-ng-true-value="'Mechanics'" data-ng-false-value="''">Mechanics</md-checkbox>
+            <md-checkbox data-ng-model='search.controls' data-ng-true-value="'Controls'" data-ng-false-value="''">Controls</md-checkbox>
+            <md-checkbox data-ng-model='search.story' data-ng-true-value="'Story'" data-ng-false-value="''">Story</md-checkbox>
+            <md-checkbox data-ng-model='search.gameplay' data-ng-true-value="'Gameplay'" data-ng-false-value="''">Gameplay</md-checkbox>
+        </div>
+        <div layout="row" layout-padding>
+            <md-input-container class="md-icon-float" flex>
+                <label>Search</label>
+                <md-icon md-svg-src="assets/images/ic_search_black_24px.svg"></md-icon>
+                <input ng-model="searchText" />
+            </md-input-container>
+        </div>
+    </md-card>
+    <md-card style="min-height: 1000px">
+        <md-list>
+            <!-- SWAK NOTE: (TODO) These filters work pretty well, but up to you how you want to set-up filtering and sorting. -->
+            <!-- Note the use of ng-class with even and odd expression, this works even when filtered, a nice tweak for striping like a table :) -->
+            <md-list-item class="md-2-line" ng-repeat="item in items | filter:searchText | filter:search.pro:true | filter:search.con:true | filter:search.bonus:true | filter:search.graphics:true | filter:search.sounds:true | filter:search.mechanics:true | filter:search.controls:true | filter:search.story:true | filter:search.gameplay:true" ng-class="$index % 2 == 0 && 'even' || 'odd'">
+                <div class="md-avatar" layout="column" layout-align="center center">
+                    <div>{{ item.rank }}</div>
+                </div>
+                <div class="md-list-item-text">
+                    <h3>{{ item.criteria }}</h3>
+                    <div class="{{ item.type }} criteria-links">
+                        <!-- SWAK NOTE: (TODO) Placeholder star rating system for UX testing, works but obviously doesn't store anything. Up to you how you want to flesh this out, but this could be a good starting point. -->
+                        <span ng-controller="RatingCtrl">
+                <span class="md-caption">Rate:</span>
+                        <span ng-init="rating = star.rating + []"></span>
+                        <span class="star-rating" star-rating rating-value="rating" data-max="5" on-rating-selected="rateFunction(rating)"></span><span class="md-caption"><a href="" onclick="return false;"><span><md-icon md-svg-src="assets/images/ic_whatshot_white_24px.svg" class="type" alt=""></md-icon> {{ item.score }}<md-tooltip md-direction="bottom">Bayesian Rating Average</md-tooltip></a></span>
+                        </span>
+                        <!-- SWAK NOTE: (TODO) These href'd links should bind to checkboxes and activate the corresponding type or category checkbox when clicked to sort by it. Low priority though, they can remain unclickable if not worth rewriting. -->
+                        <span><a href="#" class="md-caption"><md-icon md-svg-src="{{ item.typeurl }}" class="type" alt=""></md-icon> {{ item.type }}</a></span>
+                        <span><a href="#" class="md-caption"><md-icon md-svg-src="{{ item.category }}" class="submitted-by" alt=""></md-icon> {{ item.categoryname }}</a></span>
+                        <span><a href="{{ item.url }}" class="md-caption"><md-icon md-svg-src="assets/images/ic_speaker_notes_black_24px.svg" class="submitted-by" alt=""></md-icon> {{ item.submitted }}</a></span>
+                    </div>
+                </div>
+                <md-divider ng-if="!$last"></md-divider>
+            </md-list-item>
+        </md-list>
+    </md-card>
+</section>

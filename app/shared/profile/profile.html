@@ -1,0 +1,11 @@
+<section flex layout-padding>
+  <md-card style="overflow-x: scroll;">
+    <md-card-content>
+      <div if-user-state-unknown>
+        <p>Loading... </p>
+      </div>
+      <h3>My Profile</h3>
+      <pre ng-bind="user | json"></pre>
+    </md-card-content>
+  </md-card>
+</section>

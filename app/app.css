@@ -1,0 +1,215 @@
+@import url(https://fonts.googleapis.com/css?family=RobotoDraft:400,500,700,400italic);
+
+/**
+ * App-wide Styles
+ */
+
+
+/*Fallback color on html and body*/
+
+html,
+body {
+  background-color: #424242;
+}
+
+
+/*Positions md-sidenav beneath toolbar, and allows content to flow beneath*/
+
+.content-wrapper {
+  position: relative;
+}
+
+
+/********************************************************************************************/
+
+/*SWAK NOTE: (TODO) EXPERIMENTAL SECTION FOR HIDING ADDRESS BAR ON MOBILE*/
+
+/*NOT SUPPORTED BY ANGULAR-MATERIAL*/
+
+/*ISSUE REF: https://github.com/angular/material/issues/681#issuecomment-73128228*/
+
+/********************************************************************************************/
+
+
+/***Removes the 100% height that causes address bar to not disappear on mobile devices, requires media query below*/
+
+
+html,
+body {
+  height: inherit;
+}
+
+
+/***Forces fixed sidenav and toolbar to work with hiding address bar on mobile devices*/
+
+
+md-sidenav,
+md-toolbar {
+  position: fixed !important;
+}
+
+
+/***Required media query to adjust padding/margin with fixed side and top navs, 
+Also adjusts z-indexs to properly overlap with fixed positioning*/
+
+
+@media (min-width: 960px) {
+  .content-wrapper {
+    margin-left: 224px;
+  }
+  form {
+    margin-top: -150px;
+  }
+}
+
+@media (max-width: 960px) {
+  .content-wrapper {
+    margin-top: 65px;
+  }
+  md-sidenav {
+    z-index: 2;
+    padding-top: 65px;
+  }
+  md-backdrop.md-sidenav-backdrop {
+    z-index: 1;
+  }
+  md-toolbar {
+    z-index: 3;
+  }
+}
+
+
+/***Helper class to force short content pages to show full-height no matter the viewport, added to gallery, login and registration pages*/
+
+
+.full-height {
+  height: 100vh;
+}
+
+
+/********************************************************************************************/
+
+/*END EXPERIMENTAL SECTION*/
+
+/********************************************************************************************/
+
+
+/*Forceful but alternative to loading dark theme, JUST for background color on content pages*/
+
+md-content,
+md-sidenav {
+  background-color: #424242;
+}
+
+
+/*Forceful width shrink of sidenav, after researching, I found no other way to currently shrink the sidenav for angular material. A native solution is planned for later versions of angular material */
+
+md-sidenav,
+md-sidenav.md-locked-open {
+  width: 224px;
+  min-width: 224px;
+  max-width: 224px;
+}
+
+
+/*Browshappy junk*/
+
+.browsehappy {
+  margin: 0.2em 0;
+  background: #ccc;
+  color: #000;
+  padding: 0.2em 0;
+}
+
+
+/*Link colors to match accent*/
+
+body a {
+  color: #FFD286;
+}
+
+body a:hover {
+  color: #FFB332;
+}
+
+
+/*Copyright link color*/
+
+.copyright {
+  color: #6F6F6F;
+}
+
+
+/*Top left GR logo styles*/
+
+.logo {
+  height: 222px;
+  padding: 10px 0px;
+  -webkit-filter: drop-shadow(2px 2px 2px rgba(0, 0, 0, 0.4));
+  filter: drop-shadow(2px 2px 2px rgba(0, 0, 0, 0.4));
+  opacity: 0.87;
+}
+
+
+/*Icon styles for GR icon and spinning animations, subject to change*/
+
+.gricon {
+  height: 40px;
+  padding-right: 4px;
+}
+
+.icon-spin {
+  -webkit-transition: all .5s ease-in-out;
+  -o-transition: all .5s ease-in-out;
+  transition: all .5s ease-in-out;
+}
+
+.icon-spin:hover {
+  -webkit-transition: all 200ms ease;
+  -o-transition: all 200ms ease;
+  transition: all 200ms ease;
+  -webkit-transform: rotate(180deg);
+  -ms-transform: rotate(180deg);
+  transform: rotate(180deg);
+}
+
+
+/*Sidenav tweaks for better look with buttons, subject to change*/
+
+md-sidenav .md-button {
+  padding: 0;
+  margin: 0;
+}
+
+.md-button.md-white.md-fab {
+  color: rgba(255, 255, 255, 0.87);
+  background-color: #FFFFFF;
+}
+
+.md-sidenav-left {
+  overflow-x: hidden;
+}
+
+.menu-icon {
+  display: inline-block;
+  margin: 4px 16px;
+  vertical-align: middle;
+  width: 24px;
+}
+
+.navList .md-button {
+  color: #CFCFCF;
+  text-align: left;
+  width: 100%;
+}
+
+.md-button {
+  min-width: 61px;
+}
+
+
+/* The only !important I've had to make so far, may be alternative but works. Required for sidenav links to highlight accent color */
+
+.navList .md-button.active span {
+  color: #FF9F26 !important;
+}

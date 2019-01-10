@@ -1,0 +1,7 @@
+<div layout="column" ng-include="'components/topbar/topbar.html'"></div>
+<md-content flex class="md-padding">
+  <h3>Hello, {{user.fullName}}</h3> You have been authorised to view this due to being belonging to the Stormpath group "Admins"
+  <p if-user-not-in-group="'Admins'">
+    You are not authorised to do anything here because you don't belong to the "Admins" group.
+  </p>
+</md-content>
