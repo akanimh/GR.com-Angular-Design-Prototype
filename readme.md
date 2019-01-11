@@ -1,7 +1,7 @@
 # GameRoast.com Angular Design Prototype/Exploration
 > Rapidly prototyped using Angular 1.4.3 and Angular-Material back in 2015
 
-## Live Demo
+## Live Prototype
 
 http://gr.nimh.io
 
@@ -21,7 +21,7 @@ This is just a prototype website not intended for actual functionality. If you'r
 
 ## Prototype Development Links
 
-- Live Demo: http://gr.nimh.io
+- Live Prototype: http://gr.nimh.io
 - Inspiration/Design Components: https://material.angular.io/
 - AngularJS: https://angularjs.org/
 - Wilson Score Aggregation Concept: https://www.evanmiller.org/how-not-to-sort-by-average-rating.html
