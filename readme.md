@@ -8,6 +8,7 @@ http://gr.nimh.io
 ## Proposed Features
 
 A companion website for viewers to engage/contribute while reviewing video games live on Twitch.tv/gameroast
+* Fully Responsive, Fast, Mobile-First, "Dark-Themed" Design
 * Registration and Profile Creation for Viewers
 * Voting System based on Pro/Con Criteria During Streaming
 * Admin Dashboard Controls for Inputting New Pro/Con Criteria Live
