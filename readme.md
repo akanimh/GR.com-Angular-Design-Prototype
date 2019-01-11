@@ -15,11 +15,6 @@ A companion website for viewers to engage/contribute while reviewing video games
 * Wilson Score Aggregation for Final Totals (https://www.evanmiller.org/how-not-to-sort-by-average-rating.html)
 * Others Features TBD
 
-## Configuration
-
-Here you should write what are all of the configurations a user can enter when
-using the project.
-
 ## Contributing
 
 This is just a prototype website not intended for actual functionality. If you're interested in developing these ideas please contact me.
