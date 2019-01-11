@@ -1,5 +1,5 @@
 # GameRoast.com Angular Design Prototype/Exploration
-> Rapidly prototyped using Angular 1.4.3 and Angular-Material
+> Rapidly prototyped using Angular 1.4.3 and Angular-Material back in 2015
 
 ## Live Demo
 
@@ -9,7 +9,7 @@ http://gr.nimh.io
 
 A companion website for viewers to engage/contribute while reviewing video games live on Twitch.tv/gameroast
 * Registration and Profile Creation for Viewers
-* Voting System based on Pro/Con Criteria During 
+* Voting System based on Pro/Con Criteria During Streaming
 * Admin Dashboard Controls for Inputting New Pro/Con Criteria Live
 * Database Driven With Live JSON/XML feeds for Instant Updates
 * Wilson Score Aggregation for Final Totals (https://www.evanmiller.org/how-not-to-sort-by-average-rating.html)
