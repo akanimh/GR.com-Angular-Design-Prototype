@@ -25,6 +25,7 @@ This is just a prototype website not intended for actual functionality. If you'r
 - Live Prototype: http://gr.nimh.io
 - Inspiration/Design Components: https://material.angular.io/
 - AngularJS: https://angularjs.org/
+- Project Directory Structure Suggested By: https://scotch.io/tutorials/angularjs-best-practices-directory-structure
 - Wilson Score Aggregation Concept: https://www.evanmiller.org/how-not-to-sort-by-average-rating.html
 
 ## Licensing
