@@ -18,7 +18,7 @@ app.controller('bottomFabCtrl', function($scope, $timeout, $mdBottomSheet, $mdDi
   $scope.showGridBottomSheet = function($event) {
     $scope.alert = '';
     $mdBottomSheet.show({
-      templateUrl: 'components/bottom-fab/bottomsheet.tmpl.html',
+      templateUrl: 'app/shared/bottom-fab/bottomsheet.tmpl.html',
       controller: 'GridBottomSheetCtrl',
       targetEvent: $event
     });

@@ -5,7 +5,7 @@ angular.module('dashboardApp')
         $stateProvider
             .state('profile', {
                 url: '/profile',
-                templateUrl: 'app/profile/profile.html',
+                templateUrl: 'app/shared/profile/profile.html',
                 controller: 'ProfileCtrl',
                 sp: {
                     authenticate: true,

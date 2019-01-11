@@ -5,7 +5,7 @@ angular.module('dashboardApp')
     $stateProvider
       .state('register', {
         url: '/register',
-        templateUrl: 'app/register/register.html',
+        templateUrl: 'app/shared/register/register.html',
         controller: 'RegisterCtrl'
       });
   });

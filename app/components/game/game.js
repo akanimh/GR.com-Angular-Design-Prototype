@@ -5,7 +5,7 @@ angular.module('dashboardApp')
     $stateProvider
       .state('game', {
         url: '/game',
-        templateUrl: 'app/game/game.html',
+        templateUrl: 'app/components/game/game.html',
         controller: 'GameCtrl',
         sp: {
           waitForUser: true

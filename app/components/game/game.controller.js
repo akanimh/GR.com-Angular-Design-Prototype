@@ -5,7 +5,7 @@ var app = angular.module('dashboardApp')
 app.controller('GameCtrl', function($scope, $mdDialog) {
   $scope.showPercGraph = function(ev, scopeObj) {
     $mdDialog.show({
-      templateUrl: 'app/game/percgraph.tmpl.html',
+      templateUrl: 'app/components/game/percgraph.tmpl.html',
       controller: 'GameCtrl',
       targetEvent: ev,
       clickOutsideToClose: true,
@@ -13,7 +13,7 @@ app.controller('GameCtrl', function($scope, $mdDialog) {
   };
   $scope.showVotePieGraph = function(ev, scopeObj) {
     $mdDialog.show({
-      templateUrl: 'app/game/votepiegraph.tmpl.html',
+      templateUrl: 'app/components/game/votepiegraph.tmpl.html',
       controller: 'GameCtrl',
       targetEvent: ev,
       clickOutsideToClose: true,
@@ -21,7 +21,7 @@ app.controller('GameCtrl', function($scope, $mdDialog) {
   };
   $scope.showHeatMapGraph = function(ev, scopeObj) {
     $mdDialog.show({
-      templateUrl: 'app/game/heatmap.tmpl.html',
+      templateUrl: 'app/components/game/heatmap.tmpl.html',
       controller: 'GameCtrl',
       targetEvent: ev,
       clickOutsideToClose: true,
@@ -29,7 +29,7 @@ app.controller('GameCtrl', function($scope, $mdDialog) {
   };
   $scope.showVoteList = function(ev, scopeObj) {
     $mdDialog.show({
-      templateUrl: 'app/game/votelist.tmpl.html',
+      templateUrl: 'app/components/game/votelist.tmpl.html',
       controller: 'GameCtrl',
       targetEvent: ev,
       clickOutsideToClose: true,

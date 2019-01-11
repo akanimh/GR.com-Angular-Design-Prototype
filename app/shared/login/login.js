@@ -5,7 +5,7 @@ angular.module('dashboardApp')
     $stateProvider
       .state('login', {
         url: '/login',
-        templateUrl: 'app/login/login.html',
+        templateUrl: 'app/shared/login/login.html',
         controller: 'LoginCtrl'
       });
   });

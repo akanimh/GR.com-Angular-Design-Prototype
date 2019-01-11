@@ -5,7 +5,7 @@ angular.module('dashboardApp')
         $stateProvider
             .state('admin', {
                 url: '/admin',
-                templateUrl: 'app/admin/admin.html',
+                templateUrl: 'app/shared/admin/admin.html',
                 controller: 'AdminCtrl',
                 sp: {
                     authorize: {
