@@ -28,4 +28,4 @@ This is just a prototype website not intended for actual functionality. If you'r
 
 ## Licensing
 
-Just a prototype, but if you like the idea please contact me.
+Just a prototype, but if you like this idea, please contact me.
