@@ -47,4 +47,5 @@ Temporary Items
 .apdisk
 
 # Ignore CSS for Stats
-assets/css/* linguist-vendored
+assets/css/* linguist-detectable=false
+angular_components linguist-vendored
